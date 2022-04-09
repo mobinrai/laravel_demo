@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CountryFactory extends Factory
@@ -14,9 +15,9 @@ class CountryFactory extends Factory
     public function definition()
     {
         return [
-            "sortname" => $this->faker->lexify(),
-            "name" => $this->faker->words($nb=2, $asText=true),
-            "phoneCode" => $this->faker->numberBetween(10, 250),
+            'name' => $this->faker->words($nb=2, $asText=true),
+            'sortname' =>$this->faker->countryCode(),
+            'phoneCode' => $this->faker->numberBetween(10,500)
         ];
     }
 }

@@ -13,15 +13,10 @@ class GenreFactory extends Factory
      */
     public function definition()
     {
-        $status = array(
-            'Active',
-            'Inactive',
-        );
-        $path = public_path().'/assets/images/genre';
-
+        $status = ['Active', 'Inactive'];
         return [
             'title' => $this->faker->words($nb=2, $asText=true),
-            'image' => $this->faker->image($path,640,480, null, false),
+            'image' => $this->faker->image(public_path('/assets/images/genre'), 640, 480, null, false),
             'status'=> $status[array_rand($status)],
         ];
     }

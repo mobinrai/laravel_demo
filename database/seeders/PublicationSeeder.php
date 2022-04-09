@@ -15,9 +15,7 @@ class PublicationSeeder extends Seeder
      */
     public function run()
     {
-        $path = public_path().'/assets/images/publications';
-
-        File::makeDirectory($path, 0755, true, true);
+        File::makeDirectory(public_path('/assets/images/publications'), 0755, true, true);
 
         Publication::factory(10)->create();
     }

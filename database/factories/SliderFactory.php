@@ -13,8 +13,14 @@ class SliderFactory extends Factory
      */
     public function definition()
     {
+        $status = ['Active', 'Inactive'];
         return [
-            //
+            'title' => $this->faker->words(),
+            'sub_title' => $this->faker->words(),
+            'description' => $this->faker->paragraph(),
+            'link' => $this->faker->url(),
+            'image' => $this->faker->image(public_path('/assets/images/sliders'), 200, 300, null, false),
+            'status' => $status[array_rand($status)]
         ];
     }
 }
