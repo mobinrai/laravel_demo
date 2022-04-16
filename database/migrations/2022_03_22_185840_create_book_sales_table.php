@@ -17,7 +17,7 @@ class CreateBookSalesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('book_id')->constrained();
-            $table->foreignId('view')->default('0');
+            $table->unsignedInteger('view')->default('0');
             $table->text('short_description')->nullable();
             $table->enum('status', ['Active', 'Inactive'])->default('Inactive')->nullable();
             $table->nullableTimestamps();

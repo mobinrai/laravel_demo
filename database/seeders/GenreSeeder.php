@@ -16,12 +16,7 @@ class GenreSeeder extends Seeder
      */
     public function run()
     {
-
-        $path = public_path().'/assets/images/genre';
-
-        File::makeDirectory($path, 0755, true, true);
-
-
+        File::makeDirectory(public_path('/assets/images/genre'), 0755, true, true);
         Genre::factory(5)->create();
     }
 }

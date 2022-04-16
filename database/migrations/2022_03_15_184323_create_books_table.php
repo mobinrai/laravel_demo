@@ -32,6 +32,7 @@ class CreateBooksTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('publication_id')->constrained();
             $table->date('published_date')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
