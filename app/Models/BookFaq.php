@@ -12,6 +12,6 @@ class BookFaq extends Model
     protected $guarded = [];
 
     public function book(){
-        $this->belongsTo(Book::class);
+        return $this->belongsTo(Book::class);
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\Admin\BookFaqController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\GenreController;
 use App\Http\Controllers\Admin\AuthorController;
@@ -26,6 +27,7 @@ Route::prefix('admin')->as('admin.')->group(function() {
     });
     /** All resources list */
     Route::resource('books', BookController::class);
+    Route::resource('book-faqs', BookFaqController::class);
     Route::resource('genres', GenreController::class);
     Route::resource('book-sales', BookSaleController::class);
     Route::resource('languages', LanguageController::class);

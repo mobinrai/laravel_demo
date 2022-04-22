@@ -82,7 +82,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if(Request::is('admin/books-faq/*')) active @endif" href="{{route('admin.categories.index')}}" data-bs-toggle="" aria-expanded="false">
+                            <a class="nav-link @if(str_contains($route, 'admin.book-faqs')) active @endif" href="{{route('admin.book-faqs.index')}}" data-bs-toggle="" aria-expanded="false">
                                 <div class="d-flex align-items-center">
                                     <span class="nav-link-text">Faq</span>
                                 </div>

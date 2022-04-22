@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
     protected $hidden = ['pivot'];
+
+    protected $dates = ['deleted_at'];
     /**
      * boot function to create slug according to book title
      * while creating and updating book title
@@ -51,7 +54,7 @@ class Book extends Model
     }
 
     public function faqs() {
-        return $this->hasMany(FAQ::class);
+        return $this->hasMany(BookFaq::class);
     }
 
     public function bookSale(){
