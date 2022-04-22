@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Author;
+use App\Models\Country;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AuthorRequest;
@@ -14,9 +15,12 @@ class AuthorController extends Controller
 
     private $folderPath = '/assets/images/authors/';
 
+    private $routeName = 'admin.authors.index';
+
     public function index()
     {
-        # code...
+        $authors = Author::orderBy('created_at', 'desc')->paginate(7);
+        return view('admin.authors.index', compact('authors'));
     }
 
     /**
@@ -26,7 +30,9 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::all();
+        $author = New Author;
+        return view('admin.authors.create', compact('author', 'countries'));
     }
 
     /**
@@ -52,6 +58,7 @@ class AuthorController extends Controller
         $data['image'] = $imageName;
 
         Author::create($data);
+        return redirect(route($this->routeName))->with('success', 'Author created successfully');
     }
 
     /**
@@ -62,7 +69,7 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        //
+        return view('admin.authors.show', compact('author'));
     }
 
     /**
@@ -73,7 +80,8 @@ class AuthorController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        $countries = Country::all();
+        return view('admin.authors.edit', compact('author', 'countries'));
     }
 
     /**
@@ -86,11 +94,11 @@ class AuthorController extends Controller
     public function update(AuthorRequest $request, Author $author)
     {
         $data = $request->validated();
-
+        
         $imageName = $author->image;
-
+        
         if($request->hasFile('image')) {
-
+            
             if(null != $author->image) {
                 $this->removeUploadImage($author->image, public_path($this->folderPath));
             }
@@ -105,6 +113,7 @@ class AuthorController extends Controller
 
         $author->update($data);
 
+        return redirect(route($this->routeName))->with('success', 'Author updated successfully');
     }
 
     /**
@@ -115,15 +124,17 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        $type = 'error';
+        $type = 'success';
         $message = 'Author deleted successfully';
 
         if($author->books()->count() > 0){
+            $type = 'error';
             $message = 'Could not delete. Author has '.$author->books()->count().' number/s of book/s';
         }
         else {
             $author->delete();
-            $type = 'success';
+            
         }
+        return redirect(route($this->routeName))->with($type, $message);
     }
 }

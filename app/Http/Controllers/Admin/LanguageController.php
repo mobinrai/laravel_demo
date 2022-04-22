@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Language;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
-
-use App\Models\Language;
 use App\Http\Requests\Admin\LanguageRequest;
 
 class LanguageController extends Controller
@@ -18,7 +17,6 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        //
         $languages = Language::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.languages.index', compact('languages'));
     }
@@ -44,7 +42,8 @@ class LanguageController extends Controller
     {
         $data = $request->validated();
         Language::create([
-            'title' => Str::title($data['title'])
+            'title' => Str::title($data['title']),
+            'code' => Str::lower($data['code'])
         ]);
         return redirect(route($this->routeName))
                 ->with('success', 'Language added successfully');
@@ -84,7 +83,8 @@ class LanguageController extends Controller
         $data = $request->validated();
 
         $language->update([
-            'title'=>Str::title($data['title'])
+            'title'=>Str::title($data['title']),
+            'code' => Str::lower($data['code'])
         ]);
 
         return redirect(route($this->routeName))->with('success', 'Language updated successfully');

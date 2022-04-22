@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Book;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\Publication;
+use App\Models\Author;
+use App\Models\Genre;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
@@ -16,10 +21,13 @@ class BookController extends Controller
     use AddRemoveImageTrait;
 
     private $folderPath = '/assets/images/books/';
+
+    private $routeName = 'admin.books.index';
     //
     public function index()
     {
-        # code...
+        $books = Book::orderBy('created_at', 'desc')->paginate(5);
+        return view('admin.books.index', compact('books'));
     }
 
     /**
@@ -29,7 +37,12 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $book = new Book;
+        $categories = Category::all();
+        $publications = Publication::all();
+        $authors = Author::all();
+        $genres = Genre::all();        
+        return view('admin.books.create', compact('book', 'categories', 'publications', 'authors', 'genres'));
     }
 
     /**
@@ -40,10 +53,11 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        $book = $this->bookValidateData($request);
+        $data = $this->bookValidateData($request, null);
         $user = User::factory()->create();
-        $book['user_id'] = $user->id;
-        Book::create($book);
+        $data['user_id'] = $user->id;
+        $this->DbBookTransation($data);        
+        return redirect(route($this->routeName))->with('success', 'Book created successfully');
     }
 
     /**
@@ -54,7 +68,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('admin.books.show', compact('book'));
     }
 
     /**
@@ -65,7 +79,11 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $categories = Category::all();
+        $publications = Publication::all();
+        $authors = Author::all();
+        $genres = Genre::all();
+        return view('admin.books.edit', compact('book', 'categories', 'publications', 'authors', 'genres'));
     }
 
     /**
@@ -77,15 +95,16 @@ class BookController extends Controller
      */
     public function update(BookRequest $request, Book $book)
     {
-        $data = $this->bookValidateData($request);
         if($request->hasFile('image')){
             if(null != $book->image){
                 $this->removeUploadImage($book->image, public_path($this->folderPath));
             }
         }
+        $data = $this->bookValidateData($request, $book->image);
         $user = User::factory()->create();
         $data['user_id'] = $user->id;
-        $book->update($data);
+        $this->DbBookTransation($data, $book);
+        return redirect(route($this->routeName))->with('success', 'Book updated successfully');
     }
 
     /**
@@ -113,12 +132,40 @@ class BookController extends Controller
         $filename = 'Books-' . Carbon::now()->format('y_m_d-H_i_s') . '.' . $request->type_format;
         // Excel::store(new BooksExport($start_date, $end_date), 'excel/' . $filename, 'public');
     }
+    private function DbBookTransation($data, $book=null){
+        DB::transaction(function () use ($data, $book) {
+
+            $category_id = $data['category'];
+            $author_id = $data['author'];
+            $genre_id = $data['genre'];
+            $data['publication_id'] = $data['publication'];
+            $remove = ["category", "author", "genre", "publication"];
+            $new_data = array_diff_key($data, array_flip($remove));
+
+            if(null!= $book){
+                $book->update($new_data);
+            }
+            else{
+                $book = Book::create($new_data);
+            }
+            if(isset($category_id)){
+                $book->categories()->sync($category_id);
+            }
+            if(isset($author_id)){
+                $book->authors()->sync($author_id);                
+            }
+            if(isset($genre_id)){
+                $book->genres()->sync($genre_id);                
+            }            
+        }); 
+    }
     /**
      * @return array
     */
-    private function bookValidateData($request){
+    private function bookValidateData($request, $image=null){
         $book = $request->validated();
-        $imageName = null;
+        $imageName = $image != null? $image : null;
+
         if($request->hasFile('image')){
             $array=[
                 'path' => public_path($this->folderPath),

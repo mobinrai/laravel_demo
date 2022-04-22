@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Publication;
+use App\Models\Country;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PublicationRequest;
@@ -12,11 +13,14 @@ class PublicationController extends Controller
 {
     use AddRemoveImageTrait;
 
-    private $folderPath = '/assets/images/publication/';
+    private $folderPath = '/assets/images/publications/';
+
+    private $routeName = 'admin.publications.index';
     //
     public function index()
     {
-        # code...
+        $publications = Publication::orderBy('created_at', 'desc')->paginate(5);
+        return view('admin.publications.index', compact('publications'));
     }
 
     /**
@@ -26,7 +30,9 @@ class PublicationController extends Controller
      */
     public function create()
     {
-        //
+        $publication = new Publication;
+        $countries = Country::all();
+        return view('admin.publications.create',compact('publication', 'countries'));
     }
 
     /**
@@ -37,11 +43,9 @@ class PublicationController extends Controller
      */
     public function store(PublicationRequest $request)
     {
-        $data = $this->publicationValidateData($request);
-        if(key_exists('publication_image', $data)){
-            unset($data['publication_image']);
-        }
+        $data = $this->publicationValidateData($request, null);       
         Publication::create($data);
+        return redirect(route($this->routeName))->with('success', 'Publication added successfully');
     }
 
     /**
@@ -52,7 +56,7 @@ class PublicationController extends Controller
      */
     public function show(Publication $publication)
     {
-        //
+        return view('admin.publications.show',compact('publication'));
     }
 
     /**
@@ -63,7 +67,8 @@ class PublicationController extends Controller
      */
     public function edit(Publication $publication)
     {
-        //
+        $countries = Country::all();
+        return view('admin.publications.edit',compact('publication', 'countries'));
     }
 
     /**
@@ -75,18 +80,14 @@ class PublicationController extends Controller
      */
     public function update(PublicationRequest $request, Publication $publication)
     {
-        $data = $this->publicationValidateData($request);
-
-        if($request->hasFile('publication_image')){
+        if($request->hasFile('image')){
             if(null != $publication->image){
                 $this->removeUploadImage($publication->image, public_path($this->folderPath));
             }
         }
-        if(key_exists('publication_image', $data)){
-            unset($data['publication_image']);
-        }
+        $data = $this->publicationValidateData($request, $publication->image);
         $publication->update($data);
-
+        return redirect(route($this->routeName))->with('success', 'Publication updated successfully');
     }
 
     /**
@@ -97,9 +98,10 @@ class PublicationController extends Controller
      */
     public function destroy(Publication $publication)
     {
-        $type = 'error';
+        $type = 'success';
 
         if($publication->books()->count()>0) {
+            $type = 'error';
             $message = 'Could not delete. Publication has '.$publication->books()->count().' number/s of book/s';
         }
         else {
@@ -107,19 +109,22 @@ class PublicationController extends Controller
             $message = 'Publication deleted successfully';
         }
 
-        // return redirect()->route($this->routeName)
-        //     ->with($type, $message);
+        return redirect()->route($this->routeName)->with($type, $message);
     }
     /**
      * @return array
      */
-    private function publicationValidateData($request){
+    private function publicationValidateData($request, $image=null){
         $data = $request->validated();
         $imageName = null;
-        if($request->hasFile('publication_image')) {
+        if($image!=null){
+            $imageName = $image;
+        }
+        
+        if($request->hasFile('image')) {
             $array=[
                 'path'=> public_path($this->folderPath),
-                'image'=>$request->file('publication_image'),
+                'image'=>$request->file('image'),
                 'title'=>$data['title']
             ];
             $imageName = $this->uploadImage($array);

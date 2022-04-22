@@ -132,7 +132,7 @@ class GenreTest extends TestCase
     private function genreData(){
         return [
             'title' => 'Test Genre',
-            'genre_image' => UploadedFile::fake()->image('avatar.jpg'),
+            'image' => UploadedFile::fake()->image('avatar.jpg'),
             'status' => 'Active'
         ];
     }

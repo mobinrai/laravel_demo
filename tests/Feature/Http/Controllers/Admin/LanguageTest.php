@@ -122,7 +122,8 @@ class LanguageTest extends TestCase
     */
     private function languageData(){
         return [
-            'title'=>'Language'
+            'title'=>'Language',
+            'code' => 'la'
         ];
     }
 }

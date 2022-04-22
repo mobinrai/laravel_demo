@@ -39,7 +39,7 @@ class CountryTest extends TestCase
 
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', Country::all());
 
-        $response->assertOk();
+        $response->assertRedirect(route('admin.countries.index'));
 
     }
     /**
@@ -58,7 +58,7 @@ class CountryTest extends TestCase
 
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', Country::all());
 
-        $response->assertOk();
+        $response->assertRedirect(route('admin.countries.index'));
 
     }
     /**
@@ -76,7 +76,7 @@ class CountryTest extends TestCase
 
         $this->assertCount(0, Country::all());
 
-        $response->assertOk();
+        $response->assertRedirect(route('admin.countries.index'));
 
     }
     /**
@@ -88,7 +88,7 @@ class CountryTest extends TestCase
 
         return [
             'name' => $this->faker->words($nb=2, $asText=true),
-            'sortname' => $this->faker->countryCode(),
+            'sortname' => $this->faker->lexify('??'),
             'phoneCode' => $this->faker->numberBetween(10, 250)
         ];
     }

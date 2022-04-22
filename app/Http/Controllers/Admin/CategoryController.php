@@ -44,20 +44,8 @@ class CategoryController extends Controller
     {
         $data = $request->validated();
         Category::create($this->getDataArray($data));
-        return redirect(route($this->routeName));
+        return redirect(route($this->routeName))->with('success', 'Category created successfully');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -81,7 +69,7 @@ class CategoryController extends Controller
     {
         $data = $request->validated();
         $category->update($this->getDataArray($data));
-        return redirect(route($this->routeName));
+        return redirect(route($this->routeName))->with('success', 'Category updated successfully');
     }
 
     /**

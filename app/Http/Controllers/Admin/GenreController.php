@@ -49,10 +49,10 @@ class GenreController extends Controller
 
         $imageName = null;
 
-        if($request->hasFile('genre_image')) {
+        if($request->hasFile('image')) {
             $array=[
                 'path' => public_path($this->folderPath),
-                'image' => $request->file('genre_image'),
+                'image' => $request->file('image'),
                 'title' => $data['title']
             ];
             $imageName = $this->uploadImage($array);
@@ -101,14 +101,14 @@ class GenreController extends Controller
 
         $imageName = $genre->image;
 
-        if($request->hasFile('genre_image'))
+        if($request->hasFile('image'))
         {
             if(null != $genre->image) {
                 $this->removeUploadImage($genre->image, public_path($this->folderPath));
             }
             $array=[
                 'path' => public_path($this->folderPath),
-                'image' => $request->file('genre_image'),
+                'image' => $request->file('image'),
                 'title' => $data['title']
             ];
             $imageName = $this->uploadImage($array);
@@ -130,14 +130,19 @@ class GenreController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Genre $genre)
-    {
-        // if(null != $genre->image) {
-        //     $this->removeImage($genre->image);
-        // }
-        $genre->delete();
+    {   
+        $type='success';
+        $message = 'Genre deleted successfully';
+        if($genre->books()->count()>0){
+            $type='error';
+            $message = 'Could not delete. Genre has '.$genre->books()->count().' books';
+        }else{
+            $genre->delete();
+        }
+        
 
         return redirect()->route($this->routeName)
-            ->with('success', 'Genre deleted successfully');
+            ->with($type, $message);
     }
 
 }

@@ -56,7 +56,9 @@ class PublicationTest extends TestCase
 
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', Publication::all());
 
-        // $response->assertOk();
+        $response->assertStatus(302);
+
+        $response->assertRedirect(route('admin.publications.index'));
 
         $this->removeUploadImage(Publication::first()->image, public_path('/assets/images/publication/'));
     }
@@ -81,7 +83,9 @@ class PublicationTest extends TestCase
 
         $this->assertEquals($title, Publication::first()->title);
 
-        $response->assertOk();
+        $response->assertStatus(302);
+
+        $response->assertRedirect(route('admin.publications.index'));
 
         $this->removeUploadImage(Publication::first()->image, public_path('/assets/images/publication/'));
 
@@ -101,7 +105,7 @@ class PublicationTest extends TestCase
 
         $this->assertCount(0, Publication::all());
 
-        $response->assertOk();
+        $response->assertRedirect(route('admin.publications.index'));
 
         // removeUploadImage(Publication::first()->image, public_path('/assets/images/publication/'));
 
@@ -117,12 +121,12 @@ class PublicationTest extends TestCase
             'country_id' => $country->id,
             'city' => $this->faker->words($nb=2, $asText=true),
             'address' =>'Test address, 50 North-Side lake, 6990',
-            'fax' => '+491425367895',
-            'phone' => '+491425367895',
+            'fax' => rand(1111111111, 9999999999),
+            'phone' => rand(1111111111, 9999999999),
             'email' => $this->faker->email(),
             'website' => $this->faker->url(),
             'post_box' => $this->faker->numberBetween(1000,9000),
-            'publication_image' => UploadedFile::fake()->image('avatar.jpg'),
+            'image' => UploadedFile::fake()->image('avatar.jpg'),
             'status' => 'Active'
         ];
     }

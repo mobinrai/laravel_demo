@@ -21,15 +21,13 @@ class AuthorTest extends TestCase
     public function test_can_not_add_invalid_author()
     {
         $response = $this->post(route('admin.authors.store'),
-            array_merge($this->authorData(),[
+            $data = array_merge($this->authorData(),[
                 'first_name' => '',
                 'last_name' => 'test_1',
                 'phone' => 'QW123!@#Q',
-                'country_id' => 'test',
                 'top_author'=> 'Top Author'
             ]));
-
-        $response->assertSessionHasErrors(['first_name', 'last_name', 'phone', 'country_id', 'top_author']);
+        $response->assertSessionHasErrors(['first_name', 'last_name', 'phone', 'top_author']);
 
         $this->assertCount(0, Author::all());
     }
@@ -100,7 +98,7 @@ class AuthorTest extends TestCase
             'last_name' => $this->faker->lastName(),
             'country_id' => $country->id,
             'address' => $this->faker->streetAddress(),
-            'phone' => '0147258963',
+            'phone' => rand(1111111111, 9999999999),
             'email' => $this->faker->email(),
             'website' => $this->faker->url(),
             'image' => UploadedFile::fake()->image('avatar.jpg'),
