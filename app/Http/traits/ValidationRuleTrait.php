@@ -13,10 +13,16 @@ trait ValidationRuleTrait{
         return 'regex:/(^[A-Za-z ]+$)+/';
     }
     /**
-     * Regular expression for numbers field only
+     * Regular expression for numbers field with plus
      */
     public function regexNumbersAndPlus(){
         return 'regex:/(^[0-9+]+$)+/';
+    }
+    /**
+     * Regular expression for numbers only
+     */
+    public function regexNumbersOnly(){
+        return 'regex:/(^[0-9]+$)+/';
     }
     /**
      * Validation for checking if active or inactive
@@ -30,7 +36,7 @@ trait ValidationRuleTrait{
      *
     */
     public function validateImageMimes(){
-        return 'mimes:jpeg,png,jpg,gif,svg';
+        return 'mimes:jpeg,png,jpg';
     }
     /**
      * Validation for checking if the given id
@@ -39,6 +45,7 @@ trait ValidationRuleTrait{
     public function checkGivenidInTable($table_name){
         Rule::exists($table_name, 'id');
     }
+    
 
 }
 ?>

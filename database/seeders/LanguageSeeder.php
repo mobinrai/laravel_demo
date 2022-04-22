@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Language;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 
 class LanguageSeeder extends Seeder
 {
@@ -14,6 +15,14 @@ class LanguageSeeder extends Seeder
      */
     public function run()
     {
-        Language::factory(5)->create();
+        $json = File::get("database/json_files/language.json");
+        $languages = json_decode($json);
+
+        foreach ($languages as $key => $value) {
+            Language::create([
+                'code' => $value->code,
+                'title'=> $value->name
+            ]);
+        }
     }
 }

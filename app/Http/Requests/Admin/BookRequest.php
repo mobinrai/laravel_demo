@@ -35,12 +35,28 @@ class BookRequest extends FormRequest
             'edition' =>['required', 'regex:/(^[a-zA-Z, 0-9]+$)+/'],
             'pages' => ['required', 'numeric', 'digits_between:2,10'],
             'marked_price' => ['required', 'numeric'],
+            'category' => ['required', 'numeric', $this->checkGivenidInTable('categories')],
+            'author' => ['required', 'numeric', $this->checkGivenidInTable('authors')],
+            'genre' => ['required', 'numeric', $this->checkGivenidInTable('genres')],
             'sale_price'=> ['required', 'numeric'],
             'description' => ['required', 'string'],
             'status' => ['required', Rule::in(['Active', 'Inactive', 'Pending'])],
             'image'=>['sometimes', $this->validateImageMimes()],
-            'publication_id' => ['sometimes', $this->checkGivenidInTable('publications')],
-            'published_date' =>['required', 'date']
+            'publication' => ['sometimes', $this->checkGivenidInTable('publications')],
+            'published_date' =>['required', 'date', 'date_format:Y-m-d']
         ];
     }
+    /**
+     * Return validation error message for invalid request.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'published_date.date_format'=> 'Published date must in year-month-day format'
+        ];
+    }
+
+
 }

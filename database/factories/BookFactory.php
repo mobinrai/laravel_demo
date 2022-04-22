@@ -20,9 +20,7 @@ class BookFactory extends Factory
 
         $status = ['Active', 'Inactive', 'Pending'];
 
-        $wordName = Str::random(12);
-
-        $image = $this->faker->image(public_path('/assets/images/books'), 200, 300, $word=$wordName);
+        $image = $this->faker->image(public_path('/assets/images/books'), 200, 300, null, false);
 
         return [
             'title'=>$this->faker->words($nb=3, $asText=true),

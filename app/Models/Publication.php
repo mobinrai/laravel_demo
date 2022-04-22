@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
+use App\Http\traits\CustomModelTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Publication extends Model
 {
-    use HasFactory;
+    use HasFactory, CustomModelTrait;
 
     protected $dates = ['deleted_at'];
 
@@ -32,5 +33,9 @@ class Publication extends Model
 
     public function books(){
         return $this->hasMany(Book::class);
+    }
+
+    public function getFaxAttribute() {
+        return "+{$this->country->phoneCode}{$this->phone}";
     }
 }

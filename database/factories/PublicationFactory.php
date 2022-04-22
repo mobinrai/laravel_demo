@@ -26,7 +26,7 @@ class PublicationFactory extends Factory
             'email' => $this->faker->email(),
             'website' => $this->faker->url(),
             'post_box' => $this->faker->numberBetween(1200,9000),
-            'image' => $this->faker->image(public_path('/assets/images/publication'), 200, 250, null, false),
+            'image' => $this->faker->image(public_path('/assets/images/publications'), 200, 250, null, false),
             'status' => $status[array_rand($status)]
         ];
     }

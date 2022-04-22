@@ -11,6 +11,8 @@ class Book extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $hidden = ['pivot'];
     /**
      * boot function to create slug according to book title
      * while creating and updating book title
@@ -31,13 +33,17 @@ class Book extends Model
         });
     }
 
-    public function books() {
-        return $this->belongsToMany(Author::class);
+    public function authors() {
+        return $this->belongsToMany(Author::class, 'author_book');
+    }
+
+    public function genres(){
+        return $this->belongsToMany(Genre::class, 'book_genre');
     }
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'book_category');
     }
 
     public function publication() {
@@ -73,4 +79,25 @@ class Book extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function getBookGenreAttribute($id=null){
+        if(isset($id)) {
+            return $this->genres->count()?$this->genres[0]->id:0;
+        }
+        return $this->genres->count()? Str::ucfirst($this->genres[0]->title):'-';
+    }
+
+    public function getBookCategoryAttribute($id=null){
+        if(isset($id)){
+            return $this->categories->count()>0?$this->categories[0]->id:0;
+        }
+        return $this->categories->count()>0?Str::ucfirst($this->categories[0]->title):'-';
+    }
+
+    public function getBookAuthorAttribute($id=null){
+
+        if(isset($id)){
+            return $this->authors->count()>0?$this->authors[0]->id:0;
+        }
+        return $this->authors->count()>0?$this->authors[0]->getFullNameAttribute():'-';
+    }
 }

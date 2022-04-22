@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
+use App\Http\traits\CustomModelTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Author extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, CustomModelTrait;
 
     protected $hidden = ['pivot'];
 
@@ -45,6 +46,7 @@ class Author extends Model
     }
 
     public function getFullNameAttribute() {
-        return "{$this->first_name} {$this->middle_name} {$this->last_name}}";
+        return "{$this->first_name} {$this->middle_name} {$this->last_name}";
     }
+    
 }

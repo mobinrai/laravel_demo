@@ -35,7 +35,8 @@ class GenreRequest extends FormRequest
 
         return [
                 'title' => ['required','min:3','max:50',$this->regexAlphabetWithSpace(), $unique],
-                'genre_image' => ['sometimes', 'nullable','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+                'image' => ['sometimes', 'nullable'],
+                'image.*'=> ['mimes:jpeg,jpg,png','max:2048'],
                 'status' => ['required', $this->validateActiveInactiveRule()]
             ];
     }
@@ -50,8 +51,8 @@ class GenreRequest extends FormRequest
             'title.regex'=>'Please enter only alphabets and space',
             'title.unique'=>'Please enter different genre name,genre name has alredy taken',
             'title.required'=>'Please enter genre name',
-            'genre_image.mimes' => 'Please upload only jpeg,png,jpg,gif,svg images',
-            'genre_image.max' => 'Please upload image not bigger than 2048kb',
+            'image.mimes' => 'Please upload only jpeg,png,jpg images',
+            'image.max' => 'Please upload image not bigger than 2048kb',
         ];
     }
 }

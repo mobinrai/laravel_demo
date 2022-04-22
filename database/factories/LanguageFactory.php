@@ -14,7 +14,8 @@ class LanguageFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->unique()->words($nb =2, $asText = true)
+            'title' => $this->faker->unique()->words($nb =2, $asText = true),
+            'code' => $this->faker->lexify('??'),
         ];
     }
 }

@@ -39,12 +39,13 @@ class PublicationRequest extends FormRequest
             'status' => ['required',$this->validateActiveInactiveRule()],
             'email' => ['sometimes', 'nullable', 'email'],
             'city' => ['sometimes', 'nullable','max:190',$this->regexAlphabetWithSpace()],
-            'post_box'=> ['sometimes', 'nullable', 'numeric', 'digits_between:4,5'],
-            'country' => ['sometimes','nullable','numeric', $this->checkGivenidInTable('countries')],
+            'post_box'=> ['sometimes', 'nullable', $this->regexNumbersOnly(), 'min:4', 'max:5'],
+            'country_id' => ['sometimes','nullable','numeric', $this->checkGivenidInTable('countries')],
             'address' => ['sometimes', 'nullable','max:190', 'regex:/(^[A-Za-z-_,0-9 ]+$)+/'],
-            'fax' =>  ['sometimes', 'nullable', $this->regexNumbersAndPlus(), 'min:10', 'max:14'],
-            'phone' => ['sometimes', 'nullable', $this->regexNumbersAndPlus(), 'min:10', 'max:14'],
-            'publication_image' => ['sometimes', 'nullable', $this->validateImageMimes(),'max:2048'],
+            'fax' =>  ['sometimes', 'nullable', $this->regexNumbersOnly(), 'min:10', 'max:11'],
+            'phone' => ['sometimes', 'nullable', $this->regexNumbersOnly(), 'min:10', 'max:11'],
+            'image' => ['sometimes', 'nullable'],
+            'image.*'=>[$this->validateImageMimes(),'max:2048']
         ];
     }
     /**

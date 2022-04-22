@@ -26,13 +26,16 @@ class LanguageRequest extends FormRequest
     public function rules()
     {
         $unique = Rule::unique('languages', 'title');
+        $unique_code = Rule::unique('languages', 'code');
 
         if(Route::getCurrentRoute()->getName()==='admin.languages.update'){
             $unique = Rule::unique('languages', 'title')->ignore($this->language->id, 'id');
+            $unique_code = Rule::unique('languages', 'code')->ignore($this->language->id, 'id');
         }
 
         return [
-                'title' => ['required','min:2','max:50','regex:/(^[A-Za-z]+$)+/', $unique],
+                'code' => ['required','min:2','max:5', 'regex:/(^[A-Za-z]+$)+/', $unique_code],
+                'title' => ['required','min:2','max:50','regex:/(^[A-Za-z;, ()]+$)+/', $unique],
             ];
     }
     /**
@@ -42,10 +45,13 @@ class LanguageRequest extends FormRequest
      */
     public function messages()
     {
-        return [
-            'title.regex'=>'Please enter only alphabets',
+        return [            
+            'title.regex'=>'Please enter only alphabets, space, semi-colon, opening and closing brackets',
             'title.unique'=>'Please enter different language name,language name has already taken',
-            'title.required'=>'Please enter language name'
+            'title.required'=>'Please enter language name',
+            'code.regex'=>'Please enter only alphabets without space for language code',
+            'code.unique'=>'Please enter different language code,language code has already taken',
+            'code.required'=>'Please enter language code',
         ];
     }
 }
