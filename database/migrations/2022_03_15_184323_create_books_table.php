@@ -29,7 +29,7 @@ class CreateBooksTable extends Migration
             $table->unsignedInteger('stock_quantity')->default('15');
             $table->longText('description')->nullable();
             $table->enum('status', ['Active', 'Inactive', 'Pending'])->default('Pending');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('publication_id')->constrained();
             $table->date('published_date')->nullable();
             $table->string('image')->nullable();
