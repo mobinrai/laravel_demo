@@ -1,10 +1,12 @@
 ### laravel_demo
 
-## Is an online book store where user can shop books, vendor can add books...
+## Is laravel demo project for buying books..
 
 ##### clone project
 
 ##### create key using php artisan key:generate
+
+##### run test using php artisan test
 
 ##### run below commands to add database tables, languages and countries
 ##### php artisan migrate --seed
