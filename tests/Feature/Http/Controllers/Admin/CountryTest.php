@@ -4,13 +4,13 @@ namespace Tests\Feature\Http\Controllers\Admin;
 
 use Tests\TestCase;
 use App\Models\Country;
-use Illuminate\Support\Str;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Http\Controllers\Admin\traits\AdminLoginTrait;
 
 class CountryTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase, WithFaker, AdminLoginTrait;
     /**
      * A test case for adding invalid country.
      *

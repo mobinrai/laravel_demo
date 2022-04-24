@@ -6,10 +6,11 @@ use Tests\TestCase;
 use App\Models\Genre;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Http\Controllers\Admin\traits\AdminLoginTrait;
 
 class GenreTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, AdminLoginTrait;
     /**
      * A test case for genre index view.
      *

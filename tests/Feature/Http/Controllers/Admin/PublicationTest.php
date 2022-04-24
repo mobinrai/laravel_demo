@@ -10,10 +10,11 @@ use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Http\Controllers\Admin\traits\AdminLoginTrait;
 
 class PublicationTest extends TestCase
 {
-    use RefreshDatabase, WithFaker, AddRemoveImageTrait;
+    use RefreshDatabase, WithFaker, AddRemoveImageTrait, AdminLoginTrait;
     /**
      * A basic test publication index view.
      *

@@ -15,6 +15,7 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\BookRequest;
 use App\Http\traits\AddRemoveImageTrait;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -54,9 +55,13 @@ class BookController extends Controller
     public function store(BookRequest $request)
     {
         $data = $this->bookValidateData($request, null);
-        $user = User::factory()->create();
-        $data['user_id'] = $user->id;
-        $this->DbBookTransation($data);        
+        if(Auth::guard('admin')->check()){
+            $data['user_id'] = null;
+        }
+        else{
+            $data['user_id'] = Auth::user()->id;
+        }
+        $this->DbBookTransation($data);
         return redirect(route($this->routeName))->with('success', 'Book created successfully');
     }
 

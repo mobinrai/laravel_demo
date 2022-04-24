@@ -5,10 +5,11 @@ namespace Tests\Feature\Http\Controllers\Admin;
 use Tests\TestCase;
 use App\Models\Language;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Http\Controllers\Admin\traits\AdminLoginTrait;
 
 class LanguageTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, AdminLoginTrait;
 
     private $routeName = 'admin.languages.index';
     /**

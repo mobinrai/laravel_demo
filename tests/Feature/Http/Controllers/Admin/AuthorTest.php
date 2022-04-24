@@ -8,11 +8,11 @@ use App\Models\Country;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Auth;
+use Tests\Feature\Http\Controllers\Admin\traits\AdminLoginTrait;
 
 class AuthorTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase, WithFaker, AdminLoginTrait;
     /**
      * A test case for adding invalid author.
      *
@@ -21,7 +21,7 @@ class AuthorTest extends TestCase
     public function test_can_not_add_invalid_author()
     {
         $response = $this->post(route('admin.authors.store'),
-            $data = array_merge($this->authorData(),[
+            array_merge($this->authorData(),[
                 'first_name' => '',
                 'last_name' => 'test_1',
                 'phone' => 'QW123!@#Q',
@@ -43,6 +43,8 @@ class AuthorTest extends TestCase
         $this->assertCount(1, Author::all());
 
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', Author::all());
+
+        $response->assertLocation('admin/authors');
     }
     /**
      * A test case for updating  valid author.

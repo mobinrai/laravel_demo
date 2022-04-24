@@ -5,10 +5,11 @@ namespace Tests\Feature\Http\Contorllers\Admin;
 use Tests\TestCase;
 use App\Models\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Http\Controllers\Admin\traits\AdminLoginTrait;
 
 class CategoryTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, AdminLoginTrait;
 
     private $routeName = 'admin.categories.index';
     /**

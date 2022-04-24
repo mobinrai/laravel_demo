@@ -2,18 +2,20 @@
 
 namespace Tests\Feature\Http\Controllers\Admin;
 
-use Tests\TestCase;
+use App\Models\Author;
 use App\Models\Book;
+use App\Models\Category;
+use App\Models\Genre;
 use App\Models\Publication;
-use Illuminate\Support\Str;
-use Ramsey\Uuid\Type\Integer;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Http\Controllers\Admin\traits\AdminLoginTrait;
+use Tests\TestCase;
 
 class BookTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase, WithFaker, AdminLoginTrait;
     /**
      * A test case for adding invalid book.
      *
@@ -45,17 +47,17 @@ class BookTest extends TestCase
      */
     public function test_can_add_valid_book()
     {
-        // $this->withoutExceptionHandling();
-
         $response = $this->post(route('admin.books.store'), $this->bookData());
+        
+        $response->assertStatus(302);
+        
+        $book = Book::all();
 
-        $response->assertStatus(200);
+        $this->assertCount(1, $book);
 
-        $this->assertCount(1, Book::all());
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $book);
 
-        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', Book::all());
-
-        // $response->assertLocation();
+        $response->assertLocation('admin/books');
     }
     /**
      * A test case for updating valid book.
@@ -73,9 +75,7 @@ class BookTest extends TestCase
 
         $response = $this->patch(route('admin.books.update',['book'=>$book->id]), $bookData);
 
-        $response->assertStatus(200);
-
-        $this->assertEquals(Str::title($bookData['title']), Book::first()->title);
+        $response->assertStatus(302);
 
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', Book::all());
 
@@ -110,11 +110,14 @@ class BookTest extends TestCase
         $numbers = ['First', 'Second', 'Third', 'Fourth' ,'Fifth'];
         $status = ['Active', 'Inactive', 'Pending'];
         $publication = Publication::factory()->create();
+        $author = Author::factory()->create();
+        $category = Category::factory()->create();
+        $genre = Genre::factory()->create();
         return [
             'title'=>$this->faker->words($nb=3, $asText=true),
             'sub_title'=>$this->faker->words($nb=2, $asText=true),
             'serial_number' => $this->faker->numberBetween(1147483647, 2147483647),
-            'isbn' => $this->faker->numberBetween(1000000000, 2147483647),
+            'isbn' => rand(1111111111,9999999999),
             'isbn_13' => $this->faker->isbn13(),
             'edition' => $numbers[array_rand($numbers)].' edition',
             'pages' => $this->faker->numberBetween(100, 700),
@@ -124,8 +127,11 @@ class BookTest extends TestCase
             'description' => $this->faker->paragraph(),
             'status' => $status[array_rand($status)],
             'image' => UploadedFile::fake()->image('avatar.jpg'),
-            'publication_id' => $publication->id,
-            'published_date' => now()
+            'author' => $author->id,
+            'genre' => $genre->id,
+            'category' => $category->id,
+            'publication' => $publication->id,
+            'published_date' => $this->faker->date()
         ];
     }
 }
