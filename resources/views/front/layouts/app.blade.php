@@ -11,9 +11,7 @@
 <body>
     @include('front.layouts.navigation')
     <div id="app">
-        <main class="py-4">
-            @yield('content')
-        </main>
+        @yield('content')
     </div>
     @include('front.layouts.footer')
     @include('front.layouts.scripts')
