@@ -25,7 +25,7 @@ Route::prefix('admin')->as('admin.')->group(function() {
         Route::post('/logout', 'logout')->name('logout');
     });
 
-    Route::middleware('auth:admin')->group(function(){
+    Route::middleware('isAdmin')->group(function(){
         Route::controller(DashboardContoller::class)->group(function() {
             Route::get('dashboard', 'index')->name('dashboard');
             Route::get('get-book-request', 'bookRequest')->name('book-request');

@@ -15,7 +15,7 @@ class AdminAuthContoller extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:admin', ['except' => ['logout']]);
+        $this->middleware('guest:admin')->except('logout');
     }
     /**
      * Where to redirect users after login.

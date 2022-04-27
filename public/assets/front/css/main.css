@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Playfair+Display:400,700|Work+Sans:300,400,500,600,700);
-
 * {
     margin: 0px;
     padding: 0px;
@@ -80,7 +79,9 @@ a {
     text-decoration: none;
 }
 
-a:hover, a:focus, a:active {
+a:hover,
+a:focus,
+a:active {
     outline: none;
     text-decoration: none;
 }
@@ -141,7 +142,9 @@ iframe {
     text-align: center
 }
 
+
 /*Preloader*/
+
 .preloader div {
     position: absolute;
     top: 50%;
@@ -208,8 +211,7 @@ iframe {
 .wp-caption,
 .wp-caption-text,
 .gallery-caption,
-.bypostauthor {
-}
+.bypostauthor {}
 
 .wp-caption.alignleft,
 .wp-caption.alignnone {
@@ -267,27 +269,37 @@ textarea.form-control {
     color: #666;
 }
 
+
 /* WebKit, Blink, Edge */
+
 .form-control:-moz-placeholder {
     color: #666;
 }
 
+
 /* Mozilla Firefox 4 to 18 */
+
 .form-control::-moz-placeholder {
     color: #666;
 }
 
+
 /* Mozilla Firefox 19+ */
+
 .form-control:-ms-input-placeholder {
     color: #666;
 }
 
+
 /* Internet Explorer 10-11 */
+
 .form-control::-ms-input-placeholder {
     color: #66;
 }
 
+
 /* Microsoft Edge */
+
 input:focus,
 .select select:focus,
 .form-control:focus {
@@ -350,56 +362,156 @@ ol li {
     width: 100%;
 }
 
+
 /*table {*/
+
+
 /*	background-color: transparent;*/
+
+
 /*	max-width: 100%;*/
+
+
 /*}*/
+
+
 /*th { text-align: left; }*/
+
+
 /*table {*/
+
+
 /*	width: 100%;*/
+
+
 /*	margin-bottom: 15px;*/
+
+
 /*}*/
+
+
 /*table > thead > tr > th,*/
+
+
 /*table > tbody > tr > th,*/
+
+
 /*table > tfoot > tr > th,*/
+
+
 /*table > thead > tr > td,*/
+
+
 /*table > tbody > tr > td,*/
+
+
 /*table > tfoot > tr > td {*/
+
+
 /*	border-top: 1px solid #dbdbdb;*/
+
+
 /*	!* border: 1px solid #dbdbdb; *!*/
+
+
 /*	line-height: 2.5;*/
+
+
 /*	padding-left: 3px;*/
+
+
 /*	text-align: center;*/
+
+
 /*	vertical-align: top;*/
+
+
 /*}*/
+
+
 /*table thead tr th {*/
+
+
 /*	border-top: 1px solid #dbdbdb;*/
+
+
 /*	text-align: center;*/
+
+
 /*	text-transform: capitalize;*/
+
+
 /*}*/
+
+
 /*.table > caption + thead > tr:first-child > th,*/
+
+
 /*.table > colgroup + thead > tr:first-child > th,*/
+
+
 /*.table > thead:first-child > tr:first-child > th,*/
+
+
 /*.table > caption + thead > tr:first-child > td,*/
+
+
 /*.table > colgroup + thead > tr:first-child > td,*/
+
+
 /*.table > thead:first-child > tr:first-child > td { border-top: 1px solid #dbdbdb; }*/
+
+
 /*table > thead > tr > th {*/
+
+
 /*	border-bottom: 2px solid #dbdbdb;*/
+
+
 /*	vertical-align: bottom;*/
+
+
 /*}*/
+
+
 /*table > caption + thead > tr:first-child > th,*/
+
+
 /*table > colgroup + thead > tr:first-child > th,*/
+
+
 /*table > thead:first-child > tr:first-child > th,*/
+
+
 /*table > caption + thead > tr:first-child > td,*/
+
+
 /*table > colgroup + thead > tr:first-child > td,*/
+
+
 /*table > thead:first-child > tr:first-child > td { border-bottom: 0; }*/
+
+
 /*table > tbody + tbody { border-top: 2px solid #dbdbdb; }*/
+
+
 /*.table > thead > tr > th,*/
+
+
 /*.table > tbody > tr > th,*/
+
+
 /*.table > tfoot > tr > th,*/
+
+
 /*.table > thead > tr > td,*/
+
+
 /*.table > tbody > tr > td,*/
+
+
 /*.table > tfoot > tr > td { padding: 6px 10px; }*/
+
 p ins {
     color: #666;
 }
@@ -412,9 +524,11 @@ address {
     font-style: italic;
 }
 
+
 /* =============================================
 			Theme Custom Select
 ============================================= */
+
 .tg-select {
     color: #666;
     float: left;
@@ -450,9 +564,11 @@ address {
     color: #666;
 }
 
+
 /* =============================================
 		Theme Custom CheckBox Radio
 ============================================= */
+
 .tg-radio,
 .tg-radio label,
 .tg-checkbox,
@@ -475,8 +591,8 @@ address {
     display: none;
 }
 
-.tg-radio input[type=radio] + label:before,
-.tg-checkbox input[type=checkbox] + label:before {
+.tg-radio input[type=radio]+label:before,
+.tg-checkbox input[type=checkbox]+label:before {
     top: 4px;
     left: 0;
     color: #373542;
@@ -487,18 +603,20 @@ address {
     font-family: 'FontAwesome';
 }
 
-.tg-radio input[type=radio] + label:before {
+.tg-radio input[type=radio]+label:before {
     content: '';
 }
 
-.tg-radio input[type=radio]:checked + label:before,
-.tg-checkbox input[type=checkbox]:checked + label:before {
+.tg-radio input[type=radio]:checked+label:before,
+.tg-checkbox input[type=checkbox]:checked+label:before {
     content: '\f046';
 }
+
 
 /* =============================================
 			Theme Global Elements
 ============================================= */
+
 .tg-haslayout {
     width: 100%;
     float: left;
@@ -801,10 +919,10 @@ li.tg-rss a {
     margin-left: 0;
 }
 
-.no-gutters > [class^="col-"],
-.no-gutters > [class*="col-"],
-.row.no-gutters > [class^="col-"],
-.row.no-gutters > [class*="col-"] {
+.no-gutters>[class^="col-"],
+.no-gutters>[class*="col-"],
+.row.no-gutters>[class^="col-"],
+.row.no-gutters>[class*="col-"] {
     padding-right: 0;
     padding-left: 0;
 }
@@ -863,9 +981,11 @@ li.tg-rss a {
     margin: 0 30px 30px 0;
 }
 
+
 /* =============================================
 			Theme Pagination Style
 ============================================= */
+
 .tg-pagination {
     width: 100%;
     float: left;
@@ -955,9 +1075,11 @@ li.tg-rss a {
     left: 2px;
 }
 
+
 /* =============================================
 			Theme BreadCrumb Style
 ============================================= */
+
 .tg-breadcrumb {
     width: auto;
     padding: 0;
@@ -997,9 +1119,11 @@ li.tg-rss a {
     color: #fff;
 }
 
+
 /* =============================================
 			Theme Styling
 ============================================= */
+
 .tg-home-book-section {
     padding: 35px 0 0 0;
 }
@@ -1039,7 +1163,7 @@ li.tg-rss a {
     background: #fafafa;
 }
 
-.tg-themetabcontent > div {
+.tg-themetabcontent>div {
     width: 100%;
     float: left;
 }
@@ -1074,14 +1198,16 @@ li.tg-rss a {
     padding: 0 0 10px;
 }
 
-.tg-sectionhead .tg-btn, .tg-btnstyletwo {
+.tg-sectionhead .tg-btn,
+.tg-btnstyletwo {
     float: right;
     padding: 0 25px;
     margin: 6px 0 0;
     border-radius: 20px;
 }
 
-.tg-home-book-section .tg-sectionhead .tg-btn, .tg-home-book-section .tg-btnstyletwo {
+.tg-home-book-section .tg-sectionhead .tg-btn,
+.tg-home-book-section .tg-btnstyletwo {
     margin: 0;
 }
 
@@ -1152,7 +1278,9 @@ li.tg-rss a {
     color: #fff;
 }
 
+
 /*.tg-wrapper {overflow:hidden;}*/
+
 body.tg-comingsoonpage .tg-wrapper {
     overflow: visible;
 }
@@ -1185,13 +1313,15 @@ body.tg-comingsoonpage .tg-wrapper {
     line-height: inherit;
 }
 
-.tg-open > .tg-dropdowarrow i:before {
+.tg-open>.tg-dropdowarrow i:before {
     content: '\f107';
 }
+
 
 /* =============================================
 			Theme Header Style
 ============================================= */
+
 .tg-header {
     z-index: 3;
     position: relative;
@@ -1225,7 +1355,7 @@ body.tg-comingsoonpage .tg-wrapper {
     padding-left: 0;
 }
 
-.tg-addnav li + li {
+.tg-addnav li+li {
     border-left: 1px solid #dbdbdb;
 }
 
@@ -1293,7 +1423,7 @@ body.tg-comingsoonpage .tg-wrapper {
     list-style-type: none;
 }
 
-.tg-currencydropdown .tg-themedropdownmenu li + li {
+.tg-currencydropdown .tg-themedropdownmenu li+li {
     border-top: 1px solid #dbdbdb;
 }
 
@@ -1389,7 +1519,8 @@ body.tg-comingsoonpage .tg-wrapper {
     content: none;
 }
 
-.tg-userlogin ul, .tg-userlogin ul li {
+.tg-userlogin ul,
+.tg-userlogin ul li {
     list-style: none;
 }
 
@@ -1467,7 +1598,7 @@ ul.links-unauthorized li:last-of-type a {
     padding: 0 15px;
 }
 
-.tg-themedropdown + .tg-themedropdown {
+.tg-themedropdown+.tg-themedropdown {
     border-left: 1px solid #dbdbdb;
 }
 
@@ -1695,7 +1826,7 @@ ul.links-unauthorized li:last-of-type a {
     float: left;
 }
 
-.tg-minicartfoot .tg-btns .tg-btn + .tg-btn {
+.tg-minicartfoot .tg-btns .tg-btn+.tg-btn {
     float: right;
 }
 
@@ -1764,24 +1895,24 @@ ul.links-unauthorized li:last-of-type a {
     background: #fff;
 }
 
-.tt-menu > div {
+.tt-menu>div {
     width: 100%;
     float: left;
     border-top: 1px solid #ddd;
 }
 
-.tt-menu > div > div {
+.tt-menu>div>div {
     width: 100%;
     float: left;
     cursor: pointer;
     padding: 10px 20px;
 }
 
-.tt-menu > div > div:hover {
+.tt-menu>div>div:hover {
     background: #f1f1f1;
 }
 
-.tt-menu > div > div + div {
+.tt-menu>div>div+div {
     border-top: 1px solid #ddd;
 }
 
@@ -1821,7 +1952,7 @@ ul.links-unauthorized li:last-of-type a {
     line-height: inherit;
 }
 
-.tg-navigation > ul {
+.tg-navigation>ul {
     width: 100%;
     float: left;
     position: relative;
@@ -1829,7 +1960,7 @@ ul.links-unauthorized li:last-of-type a {
     vertical-align: top;
 }
 
-.tg-navigation > ul > li {
+.tg-navigation>ul>li {
     float: left;
     font-size: inherit;
     line-height: inherit;
@@ -1845,12 +1976,12 @@ ul.links-unauthorized li:last-of-type a {
     background: transparent;
 }
 
-.tg-navigation > ul > li > a {
+.tg-navigation>ul>li>a {
     color: #fff;
     padding: 0 25px;
 }
 
-.tg-navigation > ul > li > a > i {
+.tg-navigation>ul>li>a>i {
     display: block;
     font-size: 20px;
     line-height: inherit;
@@ -1860,7 +1991,7 @@ li.menu-item-has-children {
     position: relative;
 }
 
-.tg-navigation > ul > li.menu-item-has-children > a {
+.tg-navigation>ul>li.menu-item-has-children>a {
     padding-right: 40px;
     position: relative;
     -webkit-transition: none !important;
@@ -1870,7 +2001,7 @@ li.menu-item-has-children {
     transition: none !important;
 }
 
-li.menu-item-has-children > a:before {
+li.menu-item-has-children>a:before {
     top: 0;
     right: 20px;
     content: '\f107';
@@ -1880,8 +2011,8 @@ li.menu-item-has-children > a:before {
     font-family: 'FontAwesome';
 }
 
-.tg-navigation > ul > li > a:hover,
-.tg-navigation > ul > li.current-menu-item > a {
+.tg-navigation>ul>li>a:hover,
+.tg-navigation>ul>li.current-menu-item>a {
     background: rgba(0, 0, 0, 0.05);
 }
 
@@ -1919,11 +2050,11 @@ li.menu-item-has-children > a:before {
     line-height: inherit;
 }
 
-.sub-menu li + li {
+.sub-menu li+li {
     border-top: 1px solid #dbdbdb;
 }
 
-.sub-menu li.menu-item-has-children > a:before {
+.sub-menu li.menu-item-has-children>a:before {
     content: '\f105';
 }
 
@@ -1940,23 +2071,23 @@ li.menu-item-has-children > a:before {
     left: 100%;
 }
 
-.tg-navigation > ul > li:last-child .sub-menu {
+.tg-navigation>ul>li:last-child .sub-menu {
     left: auto;
     right: 0;
 }
 
-.tg-navigation > ul > li:last-child .sub-menu .sub-menu {
+.tg-navigation>ul>li:last-child .sub-menu .sub-menu {
     right: 100%;
 }
 
-li.menu-item-has-children:hover > .sub-menu,
-li.menu-item-has-children:hover > .mega-menu {
+li.menu-item-has-children:hover>.sub-menu,
+li.menu-item-has-children:hover>.mega-menu {
     top: 100%;
     opacity: 1;
     visibility: visible;
 }
 
-li.menu-item-has-children:hover > .sub-menu > li.menu-item-has-children:hover > .sub-menu {
+li.menu-item-has-children:hover>.sub-menu>li.menu-item-has-children:hover>.sub-menu {
     top: 0;
 }
 
@@ -2006,7 +2137,7 @@ li.menu-item-has-mega-menu {
     /*box-shadow: inset 3px 0 5px 0 rgba(0, 0, 0, 0.10);*/
 }
 
-.mega-menu .tg-themetabcontent > div > ul {
+.mega-menu .tg-themetabcontent>div>ul {
     margin: 0;
     width: 100%;
     float: left;
@@ -2014,7 +2145,7 @@ li.menu-item-has-mega-menu {
     table-layout: fixed;
 }
 
-.mega-menu .tg-themetabcontent > div > ul > li {
+.mega-menu .tg-themetabcontent>div>ul>li {
     padding: 0 15px;
     display: table-cell;
 }
@@ -2032,28 +2163,28 @@ li.menu-item-has-mega-menu {
     line-height: 16px;
 }
 
-.mega-menu .tg-themetabcontent > div > ul > li ul {
+.mega-menu .tg-themetabcontent>div>ul>li ul {
     width: 100%;
     float: left;
     margin: 0 0 5px;
 }
 
-.mega-menu .tg-themetabcontent > div > ul > li ul li {
+.mega-menu .tg-themetabcontent>div>ul>li ul li {
     margin: 0 0 5px;
     line-height: 20px;
 }
 
-.mega-menu .tg-themetabcontent > div > ul > li ul li a {
+.mega-menu .tg-themetabcontent>div>ul>li ul li a {
     color: #666;
     padding: 0 0 0 15px;
     position: relative;
 }
 
-.mega-menu .tg-themetabcontent > div > ul > li ul li a:hover {
+.mega-menu .tg-themetabcontent>div>ul>li ul li a:hover {
     color: #55acee;
 }
 
-.mega-menu .tg-themetabcontent > div > ul > li ul li a:before {
+.mega-menu .tg-themetabcontent>div>ul>li ul li a:before {
     top: 50%;
     left: 0;
     width: 3px;
@@ -2066,7 +2197,7 @@ li.menu-item-has-mega-menu {
     border-radius: 50%;
 }
 
-.mega-menu .tg-themetabcontent > div > ul > li ul li a:hover:before {
+.mega-menu .tg-themetabcontent>div>ul>li ul li a:hover:before {
     background: #55acee;
 }
 
@@ -2075,13 +2206,13 @@ li.menu-item-has-mega-menu {
     color: #55acee;
 }
 
-.mega-menu .tg-themetabcontent > div ul li figure {
+.mega-menu .tg-themetabcontent>div ul li figure {
     float: left;
     width: 290px;
     margin: 40px 0 0;
 }
 
-.mega-menu .tg-themetabcontent > div ul li .tg-textbox {
+.mega-menu .tg-themetabcontent>div ul li .tg-textbox {
     width: 250px;
     float: right;
     padding: 40px 0 0;
@@ -2109,10 +2240,12 @@ li.menu-item-has-mega-menu {
     border-radius: 20px;
 }
 
+
 /* =============================================
 			Theme Header V Two Style
 ============================================= */
-.tg-headervtwo .tg-navigation > ul {
+
+.tg-headervtwo .tg-navigation>ul {
     position: static;
 }
 
@@ -2164,7 +2297,7 @@ li.menu-item-has-mega-menu {
     text-align: left;
 }
 
-.tg-headervtwo .tg-navigation > ul > li {
+.tg-headervtwo .tg-navigation>ul>li {
     padding: 0 20px;
 }
 
@@ -2180,11 +2313,11 @@ li.menu-item-has-mega-menu {
     padding: 0 20px;
 }
 
-.tg-headervtwo .tg-navigation > ul > li > a {
+.tg-headervtwo .tg-navigation>ul>li>a {
     padding: 0;
 }
 
-.tg-headervtwo .tg-navigation > ul > li a:after {
+.tg-headervtwo .tg-navigation>ul>li a:after {
     top: 50%;
     left: -16px;
     content: '';
@@ -2196,7 +2329,7 @@ li.menu-item-has-mega-menu {
 }
 
 .tg-headervtwo .tg-navigation ul li:first-child a:after,
-.tg-headervtwo .tg-navigation > ul > li:nth-child(2) a:after {
+.tg-headervtwo .tg-navigation>ul>li:nth-child(2) a:after {
     display: none;
 }
 
@@ -2208,7 +2341,7 @@ li.menu-item-has-mega-menu {
     display: none;
 }
 
-.tg-headervtwo .tg-navigation > ul > li > a:before {
+.tg-headervtwo .tg-navigation>ul>li>a:before {
     left: 0;
     width: 0;
     top: 100%;
@@ -2227,8 +2360,8 @@ li.menu-item-has-mega-menu {
     width: 100%;
 }
 
-.tg-headervtwo .tg-navigation > ul > li > a:hover,
-.tg-headervtwo .tg-navigation > ul > li.current-menu-item > a {
+.tg-headervtwo .tg-navigation>ul>li>a:hover,
+.tg-headervtwo .tg-navigation>ul>li.current-menu-item>a {
     background: none;
 }
 
@@ -2251,7 +2384,7 @@ li.menu-item-has-mega-menu {
     color: #fff;
 }
 
-.tg-headervtwo .tg-themedropdown + .tg-themedropdown {
+.tg-headervtwo .tg-themedropdown+.tg-themedropdown {
     margin: 0 0 0 2px;
 }
 
@@ -2273,9 +2406,11 @@ li.menu-item-has-mega-menu {
     color: #666 !important;
 }
 
+
 /* =============================================
 			Home Slider Style
 ============================================= */
+
 .tg-homeslider {
     z-index: 1;
     width: 100%;
@@ -2406,9 +2541,11 @@ li.menu-item-has-mega-menu {
     right: 60px;
 }
 
+
 /* =============================================
 			Home Slider V Two Style
 ============================================= */
+
 .tg-homeslidervtwo .item {
     padding: 60px 0;
     background: rgba(0, 0, 0, 0.20);
@@ -2435,15 +2572,34 @@ li.menu-item-has-mega-menu {
     /*text-transform: uppercase;*/
 }
 
+
 /*.tg-homeslidervtwo .tg-slidercontent h1:before {*/
+
+
 /*    left: 50%;*/
+
+
 /*    bottom: 0;*/
+
+
 /*    content: '';*/
+
+
 /*    width: 170px;*/
+
+
 /*    height: 3px;*/
+
+
 /*    background: #fff;*/
+
+
 /*    position: absolute;*/
+
+
 /*    margin: 0 0 0 -85px;*/
+
+
 /*}*/
 
 .tg-homeslidervtwo .tg-slidercontent .tg-description {
@@ -2461,9 +2617,11 @@ li.menu-item-has-mega-menu {
     border-width: 2px;
 }
 
+
 /* =============================================
 			Home Slider V Three Style
 ============================================= */
+
 .tg-homeslidervthree .tg-slidercontent {
     top: 0;
     right: 0;
@@ -2486,16 +2644,10 @@ li.menu-item-has-mega-menu {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    background: -moz-linear-gradient(top,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.6) 100%);
-    background: -webkit-linear-gradient(top,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.6) 100%);
-    background: linear-gradient(to bottom,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.6) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#99000000', endColorstr='#99000000', GradientType=0);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#99000000', endColorstr='#99000000', GradientType=0);
 }
 
 .tg-homeslidervthree .tg-slidercontent h1 {
@@ -2525,9 +2677,11 @@ li.menu-item-has-mega-menu {
     margin-left: 0;
 }
 
+
 /* =============================================
 			Status Style
 ============================================= */
+
 .tg-allstatus {
     z-index: 2;
     width: 100%;
@@ -2600,9 +2754,11 @@ li.menu-item-has-mega-menu {
     text-align: center;
 }
 
+
 /* =============================================
 			Best Selling Book Style
 ============================================= */
+
 .tg-bestsellingbooksslider .owl-nav {
     right: 0;
     top: -62px;
@@ -2657,7 +2813,6 @@ li.menu-item-has-mega-menu {
      width: 100%;
      height: 98%;
      position: absolute;*/
-
     top: 1px;
     right: 5px;
     z-index: 3;
@@ -2665,19 +2820,10 @@ li.menu-item-has-mega-menu {
     width: 100%;
     height: 99%;
     position: absolute;
-    background: -moz-linear-gradient(left,
-    rgba(0, 0, 0, 0) 8%,
-    rgba(0, 0, 0, 0.1) 5%,
-    rgba(0, 0, 0, 0) 13%);
-    background: -webkit-linear-gradient(left,
-    rgba(0, 0, 0, 0) 8%,
-    rgba(0, 0, 0, 0.1) 5%,
-    rgba(0, 0, 0, 0) 13%);
-    background: linear-gradient(to right,
-    rgba(0, 0, 0, 0) 8%,
-    rgba(0, 0, 0, 0.1) 5%,
-    rgba(0, 0, 0, 0) 13%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#00000000', GradientType=1);
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 8%, rgba(0, 0, 0, 0.1) 5%, rgba(0, 0, 0, 0) 13%);
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 8%, rgba(0, 0, 0, 0.1) 5%, rgba(0, 0, 0, 0) 13%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 8%, rgba(0, 0, 0, 0.1) 5%, rgba(0, 0, 0, 0) 13%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#00000000', GradientType=1);
 }
 
 .tg-backcover {
@@ -2800,7 +2946,7 @@ li.menu-item-has-mega-menu {
     padding-left: 0;
 }
 
-.tg-bookscategories li + li:before {
+.tg-bookscategories li+li:before {
     left: 0;
     bottom: 0;
     content: ',';
@@ -2817,7 +2963,6 @@ li.menu-item-has-mega-menu {
 
 
 /*New*/
-
 
 .tg-category-breadcrum {
     width: 100%;
@@ -2842,7 +2987,7 @@ li.menu-item-has-mega-menu {
     padding-left: 0;
 }
 
-.tg-category-breadcrum li + li:before {
+.tg-category-breadcrum li+li:before {
     left: 0;
     bottom: 0;
     content: '>';
@@ -2896,6 +3041,7 @@ li.menu-item-has-mega-menu {
     float: left;
     padding: 0 0 12px;
 }
+
 .tg-booktitle {
     width: 100%;
     min-height: 42px !important;
@@ -2933,7 +3079,7 @@ li.menu-item-has-mega-menu {
 }
 
 .tg-bookprice {
-    margin-top:5px  ;
+    margin-top: 5px;
     width: 100%;
     float: left;
 }
@@ -2943,7 +3089,6 @@ li.menu-item-has-mega-menu {
     float: left;
     /*font: 500 18px/18px 'Work Sans', Arial, Helvetica, sans-serif;*/
     font: 500 16px/16px 'Work Sans', Arial, Helvetica, sans-serif;
-
 }
 
 .tg-bookprice del {
@@ -3005,6 +3150,7 @@ li.menu-item-has-mega-menu {
     margin: 0 0 0 10px;
     border: 1px solid #dbdbdb;
 }
+
 .tg-btnround i {
     width: 100%;
     float: left;
@@ -3014,9 +3160,11 @@ li.menu-item-has-mega-menu {
     line-height: inherit;
 }
 
+
 /* =============================================
 			Featured Item Container
 ============================================= */
+
 .tg-featureditm {
     width: 100%;
     float: left;
@@ -3103,9 +3251,11 @@ li.menu-item-has-mega-menu {
     overflow: hidden;
 }
 
+
 /* =============================================
 			New Release Style
 ============================================= */
+
 .tg-newrelease,
 .tg-newreleasebooks {
     width: 100%;
@@ -3125,9 +3275,11 @@ li.menu-item-has-mega-menu {
     margin: 0 30px 0 0;
 }
 
+
 /* =============================================
 			Books Collection Counter
 ============================================= */
+
 .tg-collectioncount {
     padding: 80px 0;
 }
@@ -3145,7 +3297,7 @@ li.menu-item-has-mega-menu {
     text-align: center;
 }
 
-.tg-collectioncounter + .tg-collectioncounter:before {
+.tg-collectioncounter+.tg-collectioncounter:before {
     top: 0;
     left: 0;
     width: 1px;
@@ -3168,12 +3320,10 @@ li.menu-item-has-mega-menu {
 
 .tg-titlepluscounter h2 {
     color: #ffffff !important;
-
 }
 
 .tg-titlepluscounter h3 {
     color: #ffffff !important;
-
 }
 
 .tg-collectioncountericon {
@@ -3210,9 +3360,11 @@ li.menu-item-has-mega-menu {
     font: 400 16px/16px 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
+
 /* =============================================
 			Picked By Authores
 ============================================= */
+
 .tg-pickedbyauthorslider .item {
     width: 100%;
     float: left;
@@ -3298,8 +3450,7 @@ li.menu-item-has-mega-menu {
     transform: perspective(3000px) rotateY(80deg) rotateZ(3deg);
 }
 
-.tg-pickedbyauthor .tg-postbook:hover .tg-bookimg:before {
-}
+.tg-pickedbyauthor .tg-postbook:hover .tg-bookimg:before {}
 
 .tg-pickedbyauthor .tg-backcover,
 .tg-pickedbyauthor .tg-backcover:after {
@@ -3394,9 +3545,11 @@ li.menu-item-has-mega-menu {
     visibility: visible;
 }
 
+
 /* =============================================
 			Testimonials Style
 ============================================= */
+
 .tg-testimonials {
     width: 100%;
     float: left;
@@ -3495,9 +3648,11 @@ li.menu-item-has-mega-menu {
     left: -60px;
 }
 
+
 /* =============================================
 			Authors Style
 ============================================= */
+
 .tg-authorsslider .owl-nav {
     top: -65px;
     right: 15px;
@@ -3603,9 +3758,11 @@ li.menu-item-has-mega-menu {
     background: #0077B5;
 }
 
+
 /* =============================================
 			Call to Action Style
 ============================================= */
+
 .tg-calltoaction {
     width: 100%;
     float: left;
@@ -3634,9 +3791,11 @@ li.menu-item-has-mega-menu {
     position: absolute;
 }
 
+
 /* =============================================
 			latest News Style
 ============================================= */
+
 .tg-postslider .owl-nav {
     top: -86px;
     right: 15px;
@@ -3724,7 +3883,7 @@ li.menu-item-has-mega-menu {
     padding-right: 0;
 }
 
-.tg-postmetadata li + li:before {
+.tg-postmetadata li+li:before {
     top: 0;
     left: -2px;
     content: '/';
@@ -3754,9 +3913,11 @@ li.menu-item-has-mega-menu {
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.20);
 }
 
+
 /* =============================================
 			Footer Style
 ============================================= */
+
 .tg-footer {
     background: #f7f7f7;
     border-top: 2px solid;
@@ -3856,14 +4017,14 @@ li.menu-item-has-mega-menu {
     padding-bottom: 20px;
 }
 
-.tg-contactinfo li > i {
+.tg-contactinfo li>i {
     width: 35px;
     height: 35px;
     font-size: 22px;
     line-height: 35px;
 }
 
-.tg-contactinfo li > i,
+.tg-contactinfo li>i,
 .tg-contactinfo li address,
 .tg-contactinfo li span {
     margin: 0;
@@ -3891,7 +4052,7 @@ li.menu-item-has-mega-menu {
     float: left;
 }
 
-.tg-widget + .tg-widget {
+.tg-widget+.tg-widget {
     margin: 20px 0 0;
 }
 
@@ -3937,7 +4098,7 @@ li.menu-item-has-mega-menu {
     list-style-type: none;
 }
 
-.tg-widget ul li + li {
+.tg-widget ul li+li {
     border-top: 1px solid #e6e6e6;
 }
 
@@ -4037,7 +4198,7 @@ li.menu-item-has-mega-menu {
     border-radius: 50%;
 }
 
-.tg-footercol.tg-widget ul li + li {
+.tg-footercol.tg-widget ul li+li {
     border: 0;
 }
 
@@ -4120,7 +4281,7 @@ li.menu-item-has-mega-menu {
     width: 33.33%;
 }
 
-.tg-widgetinstagram ul li + li {
+.tg-widgetinstagram ul li+li {
     border: 0;
 }
 
@@ -4177,7 +4338,7 @@ li.menu-item-has-mega-menu {
     color: #fff;
 }
 
-.tg-widgetblogers ul li + li {
+.tg-widgetblogers ul li+li {
     border: 0;
 }
 
@@ -4307,12 +4468,16 @@ li.menu-item-has-mega-menu {
     line-height: inherit;
 }
 
+
 /* ==========================================================================
 			Inner Pages Style
 ========================================================================== */
+
+
 /* =============================================
 			Inner Banner Style
 ============================================= */
+
 .tg-innerbanner {
     height: 300px;
     text-align: center;
@@ -4342,9 +4507,11 @@ li.menu-item-has-mega-menu {
     font-weight: bold;
 }
 
+
 /* =============================================
 			About Us Style
 ============================================= */
+
 .tg-aboutus,
 .tg-aboutusshortcode {
     width: 100%;
@@ -4397,9 +4564,11 @@ li.menu-item-has-mega-menu {
     padding: 15px 0 20px;
 }
 
+
 /* =============================================
 			Success Journey Style
 ============================================= */
+
 .tg-successstory {
     width: 100%;
     float: left;
@@ -4444,9 +4613,11 @@ li.menu-item-has-mega-menu {
     position: absolute;
 }
 
+
 /* =============================================
 			Author Grid Style
 ============================================= */
+
 .tg-authorsgrid {
     width: 100%;
     float: left;
@@ -4457,9 +4628,11 @@ li.menu-item-has-mega-menu {
     clear: both;
 }
 
+
 /* =============================================
 			404 Error Style
 ============================================= */
+
 .tg-404error {
     width: 100%;
     float: left;
@@ -4519,9 +4692,11 @@ li.menu-item-has-mega-menu {
     line-height: 13px;
 }
 
+
 /* =============================================
 			Contact Us Style
 ============================================= */
+
 .tg-contactus {
     width: 100%;
     float: left;
@@ -4592,9 +4767,11 @@ li.menu-item-has-mega-menu {
     float: left;
 }
 
+
 /* =============================================
 			News Grid Style
 ============================================= */
+
 .tg-newsgrid {
     width: 100%;
     float: left;
@@ -4604,9 +4781,11 @@ li.menu-item-has-mega-menu {
     min-height: 390px;
 }
 
+
 /* =============================================
 			News List Style
 ============================================= */
+
 .tg-newslist {
     width: 100%;
     float: left;
@@ -4633,16 +4812,18 @@ li.menu-item-has-mega-menu {
     text-decoration: none;
 }
 
+
 /* =============================================
 			News Detail Style
 ============================================= */
+
 .tg-newsdetailimg {
     width: 100%;
     float: left;
     margin: 0 0 30px;
 }
 
-.tg-newsdetailimg > img {
+.tg-newsdetailimg>img {
     width: 100%;
     height: auto;
     display: block;
@@ -4685,11 +4866,11 @@ li.menu-item-has-mega-menu {
     float: left;
 }
 
-.tg-newsdetail > .tg-posttitle {
+.tg-newsdetail>.tg-posttitle {
     padding: 0 0 20px;
 }
 
-.tg-newsdetail > .tg-posttitle h3 {
+.tg-newsdetail>.tg-posttitle h3 {
     font-size: 30px;
     line-height: 30px;
 }
@@ -5011,9 +5192,11 @@ blockquote .tg-bookwriter {
     padding: 0 60px;
 }
 
+
 /* =============================================
 			Products Style
 ============================================= */
+
 .tg-products {
     width: 100%;
     float: left;
@@ -5090,11 +5273,12 @@ blockquote .tg-bookwriter {
     padding: 0 0 15px;
 }
 
+
 /*.tg-products .tg-productgrid [class*="col-"]:nth-child(6n+6) {
     clear: both;
 }*/
 
-.tg-refinesearch > span {
+.tg-refinesearch>span {
     float: left;
     color: #666;
     font-size: 13px;
@@ -5115,7 +5299,7 @@ blockquote .tg-bookwriter {
     border: 1px solid #dbdbdb;
 }
 
-.tg-formsortshoitems fieldset .form-group + .form-group {
+.tg-formsortshoitems fieldset .form-group+.form-group {
     margin: 0 0 0 10px;
 }
 
@@ -5164,9 +5348,11 @@ blockquote .tg-bookwriter {
     /*min-height: 536px;*/
 }
 
+
 /* =============================================
 			Product Detail Style
 ============================================= */
+
 .tg-productdetail {
     width: 100%;
     float: left;
@@ -5228,7 +5414,7 @@ blockquote .tg-bookwriter {
     list-style-type: none;
 }
 
-.tg-delevrystock li + li {
+.tg-delevrystock li+li {
     padding: 30px 0 0;
 }
 
@@ -5521,7 +5707,7 @@ blockquote .tg-bookwriter {
     list-style-type: none;
 }
 
-.tg-themetabs li + li {
+.tg-themetabs li+li {
     margin: 0 0 0 5px;
 }
 
@@ -5574,16 +5760,34 @@ blockquote .tg-bookwriter {
     float: left;
 }
 
+
 /*.tg-tab-pane .tg-description figure {*/
+
+
 /*    width: auto;*/
+
+
 /*}*/
 
+
 /*.tg-tab-pane .tg-description figure img {*/
+
+
 /*    opacity: 0;*/
+
+
 /*    width: 100%;*/
+
+
 /*    height: auto;*/
+
+
 /*    display: block;*/
+
+
 /*    visibility: hidden;*/
+
+
 /*}*/
 
 .tg-tab-pane .tg-description iframe {
@@ -5777,9 +5981,11 @@ blockquote .tg-bookwriter {
     position: absolute;
 }
 
+
 /* =============================================
 			Author Detail Style
 ============================================= */
+
 .tg-authordetail {
     width: 100%;
     float: left;
@@ -5852,9 +6058,11 @@ blockquote .tg-bookwriter {
     float: none;
 }
 
+
 /* =============================================
 			Comingsoon Style
 ============================================= */
+
 body.tg-comingsoonpage {
     height: auto;
     position: static;
@@ -5870,16 +6078,10 @@ body.tg-comingsoonpage:before {
     width: 100%;
     height: 100%;
     position: fixed;
-    background: -moz-linear-gradient(top,
-    rgba(72, 72, 72, 0.6) 0%,
-    rgba(72, 72, 72, 0.6) 100%);
-    background: -webkit-linear-gradient(top,
-    rgba(72, 72, 72, 0.6) 0%,
-    rgba(72, 72, 72, 0.6) 100%);
-    background: linear-gradient(to bottom,
-    rgba(72, 72, 72, 0.6) 0%,
-    rgba(72, 72, 72, 0.6) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#99484848', endColorstr='#99484848', GradientType=0);
+    background: -moz-linear-gradient(top, rgba(72, 72, 72, 0.6) 0%, rgba(72, 72, 72, 0.6) 100%);
+    background: -webkit-linear-gradient(top, rgba(72, 72, 72, 0.6) 0%, rgba(72, 72, 72, 0.6) 100%);
+    background: linear-gradient(to bottom, rgba(72, 72, 72, 0.6) 0%, rgba(72, 72, 72, 0.6) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#99484848', endColorstr='#99484848', GradientType=0);
 }
 
 .tg-comingsoonholder {
@@ -6026,9 +6228,11 @@ body.tg-comingsoonpage .tg-footerbar {
     position: static;
 }
 
+
 /* =============================================
 			Product Modal
 ============================================= */
+
 #product-modal .xzoom-gallery {
     margin: 0;
 }
@@ -6043,7 +6247,6 @@ div.tg-wishlist {
 /* =============================================
 			Product Review
 ============================================= */
-
 
 .book-comments-container {
     background: #ffffff;
@@ -6251,13 +6454,40 @@ div.tg-wishlist {
     font-size: 2em;
 }
 
-
-.review-stars__container #star-1:checked ~ section [for='star-1'] svg, .review-stars__container #star-2:checked ~ section [for='star-1'] svg, .review-stars__container #star-2:checked ~ section [for='star-2'] svg, .review-stars__container #star-3:checked ~ section [for='star-1'] svg, .review-stars__container #star-3:checked ~ section [for='star-2'] svg, .review-stars__container #star-3:checked ~ section [for='star-3'] svg, .review-stars__container #star-4:checked ~ section [for='star-1'] svg, .review-stars__container #star-4:checked ~ section [for='star-2'] svg, .review-stars__container #star-4:checked ~ section [for='star-3'] svg, .review-stars__container #star-4:checked ~ section [for='star-4'] svg, .review-stars__container #star-5:checked ~ section [for='star-1'] svg, .review-stars__container #star-5:checked ~ section [for='star-2'] svg, .review-stars__container #star-5:checked ~ section [for='star-3'] svg, .review-stars__container #star-5:checked ~ section [for='star-4'] svg, .review-stars__container #star-5:checked ~ section [for='star-5'] svg {
+.review-stars__container #star-1:checked~section [for='star-1'] svg,
+.review-stars__container #star-2:checked~section [for='star-1'] svg,
+.review-stars__container #star-2:checked~section [for='star-2'] svg,
+.review-stars__container #star-3:checked~section [for='star-1'] svg,
+.review-stars__container #star-3:checked~section [for='star-2'] svg,
+.review-stars__container #star-3:checked~section [for='star-3'] svg,
+.review-stars__container #star-4:checked~section [for='star-1'] svg,
+.review-stars__container #star-4:checked~section [for='star-2'] svg,
+.review-stars__container #star-4:checked~section [for='star-3'] svg,
+.review-stars__container #star-4:checked~section [for='star-4'] svg,
+.review-stars__container #star-5:checked~section [for='star-1'] svg,
+.review-stars__container #star-5:checked~section [for='star-2'] svg,
+.review-stars__container #star-5:checked~section [for='star-3'] svg,
+.review-stars__container #star-5:checked~section [for='star-4'] svg,
+.review-stars__container #star-5:checked~section [for='star-5'] svg {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
 
-.review-stars__container #star-1:checked ~ section [for='star-1'] svg path, .review-stars__container #star-2:checked ~ section [for='star-1'] svg path, .review-stars__container #star-2:checked ~ section [for='star-2'] svg path, .review-stars__container #star-3:checked ~ section [for='star-1'] svg path, .review-stars__container #star-3:checked ~ section [for='star-2'] svg path, .review-stars__container #star-3:checked ~ section [for='star-3'] svg path, .review-stars__container #star-4:checked ~ section [for='star-1'] svg path, .review-stars__container #star-4:checked ~ section [for='star-2'] svg path, .review-stars__container #star-4:checked ~ section [for='star-3'] svg path, .review-stars__container #star-4:checked ~ section [for='star-4'] svg path, .review-stars__container #star-5:checked ~ section [for='star-1'] svg path, .review-stars__container #star-5:checked ~ section [for='star-2'] svg path, .review-stars__container #star-5:checked ~ section [for='star-3'] svg path, .review-stars__container #star-5:checked ~ section [for='star-4'] svg path, .review-stars__container #star-5:checked ~ section [for='star-5'] svg path {
+.review-stars__container #star-1:checked~section [for='star-1'] svg path,
+.review-stars__container #star-2:checked~section [for='star-1'] svg path,
+.review-stars__container #star-2:checked~section [for='star-2'] svg path,
+.review-stars__container #star-3:checked~section [for='star-1'] svg path,
+.review-stars__container #star-3:checked~section [for='star-2'] svg path,
+.review-stars__container #star-3:checked~section [for='star-3'] svg path,
+.review-stars__container #star-4:checked~section [for='star-1'] svg path,
+.review-stars__container #star-4:checked~section [for='star-2'] svg path,
+.review-stars__container #star-4:checked~section [for='star-3'] svg path,
+.review-stars__container #star-4:checked~section [for='star-4'] svg path,
+.review-stars__container #star-5:checked~section [for='star-1'] svg path,
+.review-stars__container #star-5:checked~section [for='star-2'] svg path,
+.review-stars__container #star-5:checked~section [for='star-3'] svg path,
+.review-stars__container #star-5:checked~section [for='star-4'] svg path,
+.review-stars__container #star-5:checked~section [for='star-5'] svg path {
     fill: #FFBB00;
     stroke: #cc9600;
 }
@@ -6289,10 +6519,8 @@ div.tg-wishlist {
 }
 
 .review-stars__container label svg path {
-    -webkit-transition: fill 200ms ease-in-out,
-    stroke 100ms ease-in-out;
-    transition: fill 200ms ease-in-out,
-    stroke 100ms ease-in-out;
+    -webkit-transition: fill 200ms ease-in-out, stroke 100ms ease-in-out;
+    transition: fill 200ms ease-in-out, stroke 100ms ease-in-out;
 }
 
 .review-stars__container label[for="star-null"] {
@@ -6316,7 +6544,9 @@ div.tg-wishlist {
     margin-top: 45px;
 }
 
+
 /* Home page categories*/
+
 .categories-5x .category {
     width: 20%;
 }
@@ -6335,7 +6565,6 @@ div.tg-wishlist {
     display: inline-block;
     width: 100%;
     position: relative;
-
 }
 
 .category article .thumb img {
@@ -6353,9 +6582,7 @@ div.tg-wishlist {
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
     /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);*/
     box-shadow: 0 0 5px #6fb879;
-
 }
-
 
 .category .blog-post .module {
     display: block;
@@ -6385,13 +6612,13 @@ div.tg-wishlist {
     text-decoration: none;
 }
 
+
 /*Rating filter*/
 
 .rating-form .form-group {
     position: relative;
     border: 0;
 }
-
 
 .rating-form .form-item {
     position: relative;
@@ -6402,7 +6629,7 @@ div.tg-wishlist {
     direction: rtl;
 }
 
-.rating-form + .form-item {
+.rating-form+.form-item {
     padding-top: 10px;
 }
 
@@ -6421,7 +6648,6 @@ div.tg-wishlist {
     position: relative;
 }
 
-
 .rating-form label .fa {
     font-size: 30px;
     font-size: 3rem;
@@ -6438,9 +6664,9 @@ div.tg-wishlist {
 
 .rating-form label:hover .fa-star-o,
 .rating-form label:focus .fa-star-o,
-.rating-form label:hover ~ label .fa-star-o,
-.rating-form label:focus ~ label .fa-star-o,
-.rating-form input[type='radio']:checked ~ label .fa-star-o {
+.rating-form label:hover~label .fa-star-o,
+.rating-form label:focus~label .fa-star-o,
+.rating-form input[type='radio']:checked~label .fa-star-o {
     opacity: 0;
 }
 
@@ -6453,14 +6679,14 @@ div.tg-wishlist {
 
 .rating-form label:hover .fa-star,
 .rating-form label:focus .fa-star,
-.rating-form label:hover ~ label .fa-star,
-.rating-form label:focus ~ label .fa-star,
-.rating-form input[type='radio']:checked ~ label .fa-star {
+.rating-form label:hover~label .fa-star,
+.rating-form label:focus~label .fa-star,
+.rating-form input[type='radio']:checked~label .fa-star {
     opacity: 1;
     color: #dec727;
 }
 
-.rating-form input[type='radio']:checked ~ label .fa-star {
+.rating-form input[type='radio']:checked~label .fa-star {
     color: gold;
 }
 
@@ -6484,7 +6710,7 @@ div.tg-wishlist {
     transition: all 0.2s ease-in-out;
 }
 
-.rating-form input[type='radio']:checked ~ .form-action {
+.rating-form input[type='radio']:checked~.form-action {
     cursor: pointer;
     opacity: 1;
 }
@@ -6516,7 +6742,7 @@ div.tg-wishlist {
     background: #ff5d75;
 }
 
-.rating-form input[type='radio']:checked ~ .form-action .btn-reset {
+.rating-form input[type='radio']:checked~.form-action .btn-reset {
     cursor: pointer;
 }
 
@@ -6524,7 +6750,8 @@ div.tg-wishlist {
     width: 100%;
 }
 
-.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+.algolia-autocomplete .aa-input,
+.algolia-autocomplete .aa-hint {
     width: 100%;
 }
 
@@ -6579,9 +6806,7 @@ div.tg-wishlist {
     margin-right: 2%;
 }
 
-.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item .search-product-image img {
-
-}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item .search-product-image img {}
 
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item .search-product-details {
     float: left;
@@ -6627,7 +6852,12 @@ div.tg-wishlist {
     padding-top: 20px;
 }
 
-.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
     z-index: 3;
     color: #fff;
     cursor: default;
@@ -6635,8 +6865,8 @@ div.tg-wishlist {
     border-color: #82cc2e;
 }
 
-.pagination > li > a, .pagination > li > span {
-
+.pagination>li>a,
+.pagination>li>span {
     position: relative;
     float: left;
     padding: 6px 12px;
@@ -6646,7 +6876,6 @@ div.tg-wishlist {
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #ddd;
-
 }
 
 .tg-archive-products .tg-productgrid [class^="col-"]:nth-child(5),

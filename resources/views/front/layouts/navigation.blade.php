@@ -53,9 +53,9 @@
                 <i class="fas fa-heart text-primary"></i>
                 <span class="badge">0</span>
             </a>
-            <a href="" class="btn border">
+            <a href="{{route('cart.list')}}" class="btn border">
                 <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge">0</span>
+                <span class="badge">{{Darryldecode\Cart\Facades\CartFacade::getContent()->count()}}</span>
             </a>
         </div>
     </div>
@@ -96,10 +96,10 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse"  style="background-color: #898585;">
                     <div class="navbar-nav mr-auto py-0">
                         <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
-                        <a href="shop.html" class="nav-item nav-link">Shop</a>
-                        <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                        <a href="{{route('books.all')}}" class="nav-item nav-link">Books</a>
+                        <a href="{{route('books.all')}}" class="nav-item nav-link">Publications</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Genre</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="cart.html" class="dropdown-item">Shopping Cart</a>
                                 <a href="checkout.html" class="dropdown-item">Checkout</a>
@@ -117,8 +117,22 @@
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="{{route('login')}}" class="nav-item nav-link">Login</a>
-                        <a href="" class="nav-item nav-link">Register</a>
+                        @guest
+                            @if (Route::has('login'))
+                                <a class="nav-item nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            @endif
+                            @if (Route::has('register'))
+                                <a class="nav-item nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            @endif
+                        @else
+                        <a href="{{route('users.dashboard')}}" class="nav-item nav-link active">{{ Auth::user()->name }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                        <a class="nav-item nav-link" href="{{ route('logout') }}"  onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }} </a>
+                        @endguest
                     </div>
                 </div>
             </nav>

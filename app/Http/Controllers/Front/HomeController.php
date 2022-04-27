@@ -18,18 +18,17 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth:web');
     }
 
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $topAuthors = Author::whereTopAuthor('Yes')->orderBy('updated_at', 'desc')->take(10)->get();
-        $genres = Genre::withCount('books')->whereNotNull('image')->whereStatus('Active')->orderBy('updated_at', 'desc')->take(10)->get();
+        $genres = Genre::has('books', '>' , 0)->with('books')->whereNotNull('image')->whereStatus('Active')->orderBy('updated_at', 'desc')->take(10)->get();
         $books = Book::whereStatus('Active')->orderBy('created_at', 'asc')->get();
         $categories = Category::whereStatus('Active')->get();
         return view('front.index', compact('topAuthors','genres', 'books','categories'));

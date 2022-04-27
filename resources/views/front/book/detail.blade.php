@@ -6,6 +6,9 @@
     <!-- Shop Detail Start -->
     <div class="container-fluid py-5">
         <div class="row px-xl-5">
+            <div class="col-lg-12">
+                @include('front.includes.success_error_message')
+            </div>
             <div class="col-lg-5 pb-5">
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-item active">
@@ -13,18 +16,24 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-7 pb-5">
                 <h3 class="font-weight-semi-bold">{{$bookDetail->title}}</h3>
                 <div class="d-flex mb-3">
                     <div class="text-primary mr-2">
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star-half-alt"></small>
-                        <small class="far fa-star"></small>
+                        @if($bookDetail->reviews->count()>0)
+                            @php $stars=getTotalBookStars($bookDetail->reviews) @endphp
+                            @for($i=1; $i<=5; $i++)     
+                                @php $class="fas fa-star"; @endphp
+                                @if($stars > $i && $stars < ($i+1) && ($i+1) < 6)
+                                    @php $class="fas fa-star-half-alt"; @endphp
+                                @elseif($stars < $i)
+                                    @php $class="far fa-star"; @endphp
+                                @endif
+                                <small class="{{$class}}"></small>
+                            @endfor
+                        @endif        
                     </div>
-                    <small class="pt-1">(50 Reviews)</small>
+                    <small class="pt-1">({{$bookDetail->reviews->count()}} Reviews)</small>
                 </div>
                 <p class="text-dark font-weight-medium mb-1 mr-3">Price: </p><span class="mb-3">{{$bookDetail->sale_price}}</span>
                 <p class="text-dark font-weight-medium mb-1 mr-3">Author: </p><span class="mb-3">{{$bookDetail->getBookAuthorAttribute()}}</span>
@@ -39,7 +48,7 @@
                                 <i class="fa fa-minus"></i>
                             </button>
                         </div>
-                        <input type="text" class="form-control bg-secondary text-center" value="1">
+                        <input type="text" class="form-control bg-secondary text-center" value="1" style="top: 20px !important;">
                         <div class="input-group-btn">
                             <button class="btn btn-primary btn-plus">
                                 <i class="fa fa-plus"></i>
@@ -54,7 +63,7 @@
             <div class="col">
                 <div class="nav nav-tabs justify-content-center border-secondary mb-4">
                     <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Infromation</a>
-                    <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Reviews (0)</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Reviews ({{$bookDetail->reviews->count()}})</a>
                     @if($bookDetail->faqs->count()>0)
                         <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Book Faq</a>
                     @endif
@@ -97,57 +106,59 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h4 class="mb-4">Review for {{$bookDetail->title}}</h4>
-                                <div class="media mb-4">
-                                    <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                    <div class="media-body">
-                                        <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
-                                        <div class="text-primary mb-2">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <i class="far fa-star"></i>
+                                @forelse ($bookDetail->reviews as $item)
+                                    <div class="media mb-4">                                    
+                                        {{-- <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;"> --}}
+                                        <div class="media-body">
+                                            <h6><small>{{getUserName($item->user_id)}}- <i>{{$item->created_at}}</i></small></h6>
+                                            {{-- starts --}}
+                                            <p>{{$item->review}}</p>
                                         </div>
-                                        <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no
-                                            at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
                                     </div>
-                                </div>
+                                @empty
+                                    Be first to review....
+                                @endforelse
                             </div>
                             <div class="col-md-6">
                                 <h4 class="mb-4">Leave a review</h4>                                
                                 @if(Auth::check())
-                                    <small>Your email address will not be published. Required fields are marked *</small>
-                                    <div class="d-flex my-3">
-                                        <p class="mb-0 mr-2">Your Rating * :</p>
-                                        <div class="text-primary">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                    </div>
+                                    <small>Your email address will not be published. Required fields are marked *</small>                                    
                                     <form action="{{route('books.review')}}" method="POST" id="book_review">
+                                        @if ($errors->any())
+                                            <div class="alert alert-outline-danger d-flex align-items-center rounded-0" role="alert">
+                                                @foreach ($errors->all() as $error)
+                                                        <span class="fas fa-times-circle text-danger me-1"></span>
+                                                        <p class="mb-0 flex-1">{{$error}}</p>
+                                                        <br>
+                                                @endforeach
+                                            </div>
+                                        @endif
                                         @csrf
                                         <input type="hidden" name="book" value="{{$bookDetail->id}}">
-                                        <div class="form-group">
-                                            <label for="message">Your Review *</label>
-                                            <textarea id="message" cols="30" name="comments" rows="5" class="form-control"></textarea>
+                                        <div class="form-group rating mb-0">
+                                            <p class="mb-0 mr-2">Your Rating * :</p>                                            
+                                            <input type="radio" id="star5" name="rating" value="10"/>
+                                            <label for="star5" title="Rocks!">5 stars</label>
+                                            <input type="radio" id="star4" name="rating" value="4"/>
+                                            <label for="star4" title="Pretty good">4 stars</label>
+                                            <input type="radio" id="star3" name="rating" value="3"/>
+                                            <label for="star3" title="Meh">3 stars</label>                                            
+                                            <input type="radio" id="star2" name="rating" value="2"/>
+                                            <label for="star2" title="Kinda bad">2 stars</label>
+                                            <input type="radio" id="star1" name="rating" value="1"/>
+                                            <label for="star1" title="Sucks big time">1 star</label>                                           
                                         </div>
-                                        <div class="form-group">
-                                            <label for="name">Your Name *</label>
-                                            <input type="text" class="form-control" name="name" value="{{old('name')}}" id="name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Your Email *</label>
-                                            <input type="email" class="form-control" name="email" value="{{old('email')}}" id="email">
-                                        </div>
-                                        <div class="form-group mb-0">
+                                        <br>                                        
+                                        <div class="form-group mb-1" style="float: left;">
+                                            <label>Your Review * :</label>
+                                            <textarea id="message" cols="30" name="comment" rows="5" class="form-control" required></textarea>
+                                        </div>                                        
+                                        <div class="form-group mb-0" style="float: left;">
                                             <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
                                         </div>
                                     </form>
                                 @else
-                                    <a href="">Write Your Review</a>                                       
+                                    <a href="{{route('login')}}">Write Your Review</a>                                       
                                 @endif    
                             </div>
                         </div>

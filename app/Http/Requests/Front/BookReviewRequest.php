@@ -28,9 +28,8 @@ class BookReviewRequest extends FormRequest
     {
         return [
             'book' => ['required', $this->regexNumbersOnly(), Rule::exists('books', 'id')],
-            'name' => ['required', $this->regexAlphabetWithSpace()],
-            'email' => ['required', 'email'],
-            'comment' => ['required', ]
+            'rating' => ['sometimes', 'numeric', 'min:0', 'max:5'],
+            'comment' => ['required', 'string']
         ];
     }
 

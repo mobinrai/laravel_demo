@@ -40,7 +40,7 @@
             @foreach ($genres as $item)
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <p class="text-right">{{$item->books_count}} books</p>
+                    <p class="text-right">{{$item->books->count()}} books</p>
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="{{asset('assets/images/genre/'.$item->image)}}" alt="">
                     </a>
@@ -77,12 +77,14 @@
         </div>
     </div>
     <!-- Offer End -->
-    <!-- Products Start -->
+    <!-- Books Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">All Products</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">All Books</span></h2>
         </div>
+        @include('front.includes.success_error_message') 
         <div class="row px-xl-5 pb-3">
+                   
             @foreach ($books as $item)
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="card product-item border-0 mb-4">
@@ -91,14 +93,18 @@
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">{{$item->title}}</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>{{$item->marked_price}}</h6>
-                                <h6 class="text-muted ml-2"><del>{{$item->sale_price}}</del></h6>
-                            </div>
+                            <h6 class="ml-2">{{$item->sale_price}}</h6>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
                             <a href="{{route('books.singleDetail', ['slug'=> $item->slug])}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            <form action="{{route('cart.store')}}" method="post" id="cart-form-{{$loop->iteration}}">
+                                @csrf
+                                <input type="hidden" name="book" value="{{$item->id}}">
+                                <input type="hidden" name="quantity" value="1">
+                            </form>
+                            <a href="{{route('cart.store')}}" onclick="submitCartForm(event, 'cart-form-{{$loop->iteration}}')" class="btn btn-sm text-dark p-0">
+                                <i class="fas fa-shopping-cart text-primary mr-1"></i>
+                                Add To Cart</a>
                         </div>
                     </div>
                 </div>                
@@ -106,7 +112,7 @@
             
         </div>
     </div>
-    <!-- Products End -->
+    <!-- Books End -->
 
     <!-- Subscribe Start -->
     <div class="container-fluid bg-secondary my-5">

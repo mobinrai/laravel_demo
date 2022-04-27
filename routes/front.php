@@ -10,10 +10,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
  * Shopping cart route list
  */
 Route::controller(BookController::class)->prefix('books')->as('books.')->group(function(){
+    Route::get('all', 'allBooks')->name('all');
     Route::get('detail/{slug}', 'singleDetail')->name('singleDetail');
-    Route::get('detail/{slug}', 'singleDetail')->name('singleDetail');
-    Route::post('review', 'storeReview')->name('review');
+    Route::middleware('auth')->group(function(){
+        Route::post('review', 'storeReview')->name('review');
+    });
 });
+
 Route::controller(ShoppingCartController::class)->group(function(){
     Route::get('cart', 'cartList')->name('cart.list');
     Route::post('cart', 'addToCart')->name('cart.store');

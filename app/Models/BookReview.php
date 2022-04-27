@@ -12,10 +12,14 @@ class BookReview extends Model
     protected $guarded = [];
 
     public function book(){
-        $this->belongsTo(Book::class);
+        return $this->belongsTo(Book::class);
     }
 
     public function user(){
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id', 'user');
+    }
+
+    public function getUserNameAttribute(){
+        return  $this->user()->name;
     }
 }

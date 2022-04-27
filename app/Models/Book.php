@@ -83,7 +83,7 @@ class Book extends Model
     }
 
     public function reviews(){
-        return $this->hasMany(Review::class);
+        return $this->hasMany(BookReview::class, 'book_id');
     }
 
     public function getBookGenreAttribute($id=null){

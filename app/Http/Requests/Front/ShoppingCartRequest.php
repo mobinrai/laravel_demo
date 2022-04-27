@@ -27,7 +27,7 @@ class ShoppingCartRequest extends FormRequest
     public function rules()
     {
         return [
-            'book_id' => ['required', $this->regexNumbersOnly(), Rule::exists('books', 'id')],
+            'book' => ['required', $this->regexNumbersOnly(), Rule::exists('books', 'id')],
             'quantity' => ['sometimes', $this->regexNumbersOnly()]
         ];
     }

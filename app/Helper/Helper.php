@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\BookReview;
 use App\Models\Configuration;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 $config = null;
@@ -50,6 +52,26 @@ if (! function_exists('getCssClassForBook')) {
             return returnCssClass($name);            
         }
         
+    }
+}
+if (! function_exists('getUserName')) {
+    function getUserName($id) {
+        $user = User::whereId($id)->pluck('name')[0];
+        return $user;
+    }
+}
+
+if (! function_exists('getTotalBookStars')) {
+    function getTotalBookStars($reviews) {
+        $totalStars = 0;
+        $ratingValues = 0;        
+        foreach($reviews as $review){
+            $ratingValues += $review->stars;
+        }
+
+        $totalStars = $ratingValues/ $reviews->count();
+        
+        return $totalStars;
     }
 }
 function returnCssClass($name){
