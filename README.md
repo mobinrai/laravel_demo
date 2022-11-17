@@ -11,7 +11,7 @@
 ##### run test using php artisan test
 
 ##### run below commands to add database tables, languages and countries
-##### php artisan migrate --seed
+##### php artisan db:seed
 
 ##### to insert dummy data uncomment comments for database seeder class inside database folder
 
